@@ -160,8 +160,8 @@ function searchByTrait(people){
 
 // search by gender
 function searchByGender(people) {
-    let gender = prompt("What is the gender you are searching for ?");
-    let foundPeople = people.filter(function(person) {
+    let gender = promptFor("What is the persons gender you are searching for?", maleFemale);
+    let foundGender = people.filter(function(person) {
         if (person.gender === gender) {
 
             return true;
@@ -171,14 +171,14 @@ function searchByGender(people) {
         }
     })
 
-    foundPeople = foundPeople[0];
-    return foundPeople;
+    foundGender = foundGender[0];
+    return foundGender;
 }
 
 // search by dob
 function searchByBirth(people) {
-    let birth = promptFor("What is the date of birth you are searching for ? (day month year)", chars);
-    let foundPeople = people.filter(function(person) {
+    let birth = promptFor("What is the date of birth you are searching for? (day month year)", chars);
+    let foundDateOfBirth = people.filter(function(person) {
         if (person.birth === birth) {
             return true;
         }
@@ -187,15 +187,15 @@ function searchByBirth(people) {
         }
     })
 
-    foundPeople = foundPeople[0];
-    return foundPeople;
+    foundDateOfBirth = foundDateOfBirth[0];
+    return foundDateOfBirth;
 }
 
 // search by height
 function searchByHeight(people) {
-    let height = promptFor("What is the height(in inches) of the person you are searching for ?", int);
+    let height = promptFor("What is the height(in inches) of the person you are searching for?", int);
 
-    let foundPeople = people.filter(function(person) {
+    let foundHeight = people.filter(function(person) {
         if (person.height === height) {
             return true;
         }
@@ -204,15 +204,15 @@ function searchByHeight(people) {
         }
     })
 
-    foundPeople = foundPeople[0];
-    return foundPeople;
+    foundHeight = foundHeight[0];
+    return foundHeight;
 }
 
 // search by weight
 function searchByWeight(people) {
-    let weight = promptFor("What is the weight of the person you are searching for ?", int);
+    let weight = promptFor("What is the weight of the person you are searching for?", int);
 
-    let foundPeople = people.filter(function(person) {
+    let foundWeight = people.filter(function(person) {
         if (person.weight === weight) {
             return true;
         }
@@ -221,15 +221,15 @@ function searchByWeight(people) {
         }
     })
 
-    foundPeople = foundPeople[0];
-    return foundPeople;
+    foundWeight = foundWeight[0];
+    return foundWeight;
 }
 
 // search by eye color
 function searchByEyes(people) {
-    let eyeColor = promptFor("What is the eye color of the person you are searching for ?", chars);
+    let eyeColor = promptFor("What is the eye color of the person you are searching for?", chars);
 
-    let foundPeople = people.filter(function(person) {
+    let foundEyeColor = people.filter(function(person) {
         if (person.eyeColor === eyeColor) {
             return true;
         }
@@ -238,15 +238,15 @@ function searchByEyes(people) {
         }    
     })
 
-    foundPeople = foundPeople[0];
-    return foundPeople;
+    foundEyeColor = foundEyeColor[0];
+    return foundEyeColor;
 }
  
 // search by occupation
 function searchByOccupation(people) {
-    let occupation = promptFor("What is the occupation of the person you are searching for ?", chars);
+    let occupation = promptFor("What is the occupation of the person you are searching for?", chars);
 
-    let foundPeople = people.filter(function(person) {
+    let foundOccupation = people.filter(function(person) {
         if (person.occupation === occupation) {
             return true;
         }
@@ -255,15 +255,15 @@ function searchByOccupation(people) {
         }   
     })
 
-    foundPeople = foundPeople[0];
-    return foundPeople;
+    foundOccupation = foundOccupation[0];
+    return foundOccupation;
 }
 
 // search by age NEED A FORMULA??
 function searchByAge(people) {
-    let age = parseInt(promptFor("What is the age of the person you are searching for ?", int));
+    let age = parseInt(promptFor("What is the age of the person you are searching for?", int));
 
-    let foundPeople = people.filter(function(person) {
+    let foundAge = people.filter(function(person) {
         if (person.age === age) {
             return true;
         }
@@ -272,8 +272,8 @@ function searchByAge(people) {
         }        
     })
 
-    foundPeople = foundPeople[0];
-    return foundPeople;
+    foundAge = foundAge[0];
+    return foundAge;
 }
 
 // alerts a list of people
@@ -289,9 +289,9 @@ function displayPerson(person) {
     let personInfo = "First Name: " + person.firstName + "\n";
     personInfo += "Last Name: " + person.lastName + "\n";
     personInfo += "Gender: " + person.gender + "\n";
-    personInfo += "Height: " + person.height + "\n";
+    personInfo += "Height: " + person.height + " inches" + "\n";
     personInfo += "Age: " + person.age + "\n";
-    personInfo += "Weight: " + person.weight + "\n";
+    personInfo += "Weight: " + person.weight + " lbs." + "\n";
     personInfo += "Occupation: " + person.occupation + "\n";
     personInfo += "Eye Color: " + person.eyeColor + "\n";
 
