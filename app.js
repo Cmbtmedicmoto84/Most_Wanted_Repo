@@ -82,17 +82,56 @@ function searchByTrait(people){
         alert("Could not locate anyone with searched criteria.");
         return app(people);
     }
-  let displayOption = prompt("Do you want to search by the persons 'gender', 'height', 'weight', 'eye color' or 'age'?  Or select two of the prior traits. Type the option you want or to start over type 'restart'.")
+  let displayOption = prompt("Do you want to search by the persons 'gender', 'height', 'weight', 'eye color' or 'age'?  Or select from 2 to 3 of the prior traits, separated by a comma. Type the option you want or to start over type 'restart'.")
   
   switch(displayOption){
-    case "gender" + "age":
-    searchByGender(people);
-    searchByAge(people);
-    displayPeople(person);
-    break;
     case "gender":
     searchByGender(people);
-    displayPerson(person);
+    displayPeople(people);
+    break;
+    case "gender" + "," + "age":
+    searchByGender(people);
+    searchByAge(people);
+    displayPeople(people);
+    break;
+    case "gender" + "," + "height":
+    searchByGender(people);
+    searchByHeight(people);
+    displayPeople(people);
+    break;
+    case "gender" + "," + "weight":
+    searchByGender(people);
+    searchByWeight(people);
+    displayPeople(people);
+    break;
+    case "gender" + "," + "eye color":
+    searchByGender(people);
+    searchByEyes(people);
+    displayPeople(people);
+    break;
+    case "gender" + "," + "age" + "," + "height":
+    searchByGender(people);
+    searchByAge(people);
+    searchByHeight(people);
+    displayPeople(people);
+    break;
+    case "gender" + "," + "height" + "weight":
+    searchByGender(people);
+    searchByHeight(people);
+    searchByWeight(people);
+    displayPeople(people);
+    break;
+    case "gender" + "," + "weight" + "," + "eye color":
+    searchByGender(people);
+    searchByWeight(people);
+    searchByEyes(people);
+    displayPeople(people);
+    break;
+    case "gender" + "," + "eye color" + "," + "age":
+    searchByGender(people);
+    searchByEyes(people);
+    searchByAge(people);
+    displayPeople(people);
     break;
     case "height":
     searchByHeight(people);
@@ -122,7 +161,6 @@ function searchByTrait(people){
 // search by gender
 function searchByGender(people) {
     let gender = prompt("What is the gender you are searching for ?");
-
     let foundPeople = people.filter(function(person) {
         if (person.gender === gender) {
 
@@ -140,7 +178,6 @@ function searchByGender(people) {
 // search by dob
 function searchByBirth(people) {
     let birth = promptFor("What is the date of birth you are searching for ? (day month year)", chars);
-
     let foundPeople = people.filter(function(person) {
         if (person.birth === birth) {
             return true;
@@ -251,6 +288,7 @@ function displayPeople(people){
 function displayPerson(person) {
     let personInfo = "First Name: " + person.firstName + "\n";
     personInfo += "Last Name: " + person.lastName + "\n";
+    personInfo += "Gender: " + person.gender + "\n";
     personInfo += "Height: " + person.height + "\n";
     personInfo += "Age: " + person.age + "\n";
     personInfo += "Weight: " + person.weight + "\n";
