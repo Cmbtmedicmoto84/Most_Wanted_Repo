@@ -13,7 +13,7 @@ function app(people){
       break;
     case 'no':
           // TODO: search by traits
-          searchResults = searchbyTraits(people);
+      searchResults = searchbyTraits(people);
       break;
       default:
     app(people); // restart app
@@ -39,6 +39,7 @@ function mainMenu(person, people){
   switch(displayOption){
     case "info":
     // TODO: get person's info
+    displayPerson(person);
     break;
     case "family":
     // TODO: get person's family
@@ -90,6 +91,7 @@ function searchByGender(people) {
 
     })
 
+    foundPerson = foundPerson[0];
     return foundPerson;
 
 }
@@ -108,13 +110,14 @@ function searchbyBirth(people) {
         }
     })
 
+    foundPerson = foundPerson[0];
     return foundPerson;
 }
 
 // search by height
 
 function searchbyHeight(people) {
-    let height = promptFor("What is the height of the person you are searching for ?", int);
+    let height = promptFor("What is the height(in inches) of the person you are searching for ?", int);
 
     let foundPerson = people.filter(function (person) {
         if (person.height === height) {
@@ -125,6 +128,7 @@ function searchbyHeight(people) {
         }
     })
 
+    foundPerson = foundPerson[0];
     return foundPerson;
 }
 
@@ -143,6 +147,8 @@ function searchbyWeight(people) {
 
         
     })
+
+    foundPerson = foundPerson[0];
     return foundPerson;
 
 
@@ -164,7 +170,12 @@ function searchByEyes(people) {
 
         
     })
+
+    foundPerson = foundPerson[0];
     return foundPerson;
+
+
+
 }
  
 // search by occupation
@@ -181,10 +192,11 @@ function searchbyOccupation(people) {
 
        
     })
+    foundPerson = foundPerson[0];
     return foundPerson;
 }
 
-// search by age
+// search by age NEED A FORMULA??
 
 function searchbyAge(people) {
     let age = parseInt(promptFor("What is the age of the person you are searching for ?", int));
@@ -199,6 +211,7 @@ function searchbyAge(people) {
 
         
     })
+    foundPerson = foundPerson[0];
     return foundPerson;
 }
 
@@ -216,11 +229,11 @@ function displayPeople(people){
 function displayPerson(person) {
     let personInfo = "First Name: " + person.firstName + "\n";
     personInfo += "Last Name: " + person.lastName + "\n";
-    personInfo += "Height: " + personInfo.height + "\n";
-    personInfo += "Age: " + personInfo.age + "\n";
-    personInfo += "Weight: " + personInfo.weight + "\n";
-    personInfo += "Occupation: " + personInfo.occupation + "\n";
-    personInfo += "Eye Color: " + personInfo.eyeColor + "\n";
+    personInfo += "Height: " + person.height + "\n";
+    personInfo += "Age: " + person.age + "\n";
+    personInfo += "Weight: " + person.weight + "\n";
+    personInfo += "Occupation: " + person.occupation + "\n";
+    personInfo += "Eye Color: " + person.eyeColor + "\n";
 
 
     alert(personInfo);
