@@ -13,7 +13,8 @@ function app(people){
       break;
     case 'no':
           // TODO: search by traits
-      searchResults = searchbyTraits(people);
+
+      searchResults = searchByTrait(people);
       break;
       default:
     app(people); // restart app
@@ -22,6 +23,7 @@ function app(people){
   
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
   mainMenu(searchResults, people);
+
 }
 
 // Menu function to call once you find who you are looking for
@@ -57,6 +59,7 @@ function mainMenu(person, people){
   }
 }
 
+
 function searchByName(people){
   let firstName = promptFor("What is the person's first name?", chars);
   let lastName = promptFor("What is the person's last name?", chars);
@@ -76,10 +79,42 @@ function searchByName(people){
 
 }
 
+function searchByTrait(people){
+  let displayOption = prompt("Do you want to search by the persons 'gender', 'height', 'weight', 'eye color' or 'age'?  Type the option you want or to start over type 'restart' and to quit type 'quit'.")
+  
+  switch(displayOption){
+    case "gender":
+    searchByGender(people);
+    break;
+    case "height":
+    searchbyHeight(people);
+    break;
+    case "weight":
+    searchbyWeight(people);
+    break;
+    case "eye color":
+    searchByEyes(people);
+    break;
+    case "age":
+    searchbyAge(people);
+    break;
+    case "restart":
+    app(people);
+    break;
+    case "quit":
+    return;
+    default:
+    return displayOption();
+  }
+
+    foundPerson = foundPerson[0];
+    return foundPerson;
+}
+
 // search by gender
 
 function searchByGender(people) {
-    let gender = promptFor("What is the gender you are searching for ?", genders);
+    let gender = promptFor("What is the gender you are searching for ?", chars);
 
     let foundPerson = people.filter(function (person) {
         if (person.gender === gender) {
