@@ -12,7 +12,8 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
-      // TODO: search by traits
+          // TODO: search by traits
+          searchResults = searchbyTraits(people);
       break;
       default:
     app(people); // restart app
@@ -67,9 +68,140 @@ function searchByName(people){
       return false;
     }
   })
-  // TODO: find the person using the name they entered
-  return foundPerson;
+    // TODO: find the person using the name they entered
+
+    foundPerson = foundPerson[0];
+    return foundPerson;
+
 }
+
+// search by gender
+
+function searchByGender(people) {
+    let gender = promptFor("What is the gender you are searching for ?", genders);
+
+    let foundPerson = people.filter(function (person) {
+        if (person.gender === gender) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    })
+
+    return foundPerson;
+
+}
+
+// search by dob
+
+function searchbyBirth(people) {
+    let birth = promptFor("What is the date of birth you are searching for ? (day month year)", chars);
+
+    let foundPerson = people.filter(function (person) {
+        if (person.birth === birth) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    })
+
+    return foundPerson;
+}
+
+// search by height
+
+function searchbyHeight(people) {
+    let height = promptFor("What is the height of the person you are searching for ?", int);
+
+    let foundPerson = people.filter(function (person) {
+        if (person.height === height) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    })
+
+    return foundPerson;
+}
+
+// search by weight
+
+function searchbyWeight(people) {
+    let weight = promptFor("What is the weight of the person you are searching for ?", int);
+
+    let foundPerson = people.filter(function (person) {
+        if (person.weight === weight) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+        
+    })
+    return foundPerson;
+
+
+}
+
+// search by eye color
+
+
+function searchByEyes(people) {
+    let eyeColor = promptFor("What is the eye color of the person you are searching for ?", chars);
+
+    let foundPerson = people.filter(function (person) {
+        if (person.eyeColor === eyeColor) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+        
+    })
+    return foundPerson;
+}
+ 
+// search by occupation
+function searchbyOccupation(people) {
+    let occupation = promptFor("What is the occupation of the person you are searching for ?", chars);
+
+    let foundPerson = people.filter(function (person) {
+        if (person.occupation === occupation) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+       
+    })
+    return foundPerson;
+}
+
+// search by age
+
+function searchbyAge(people) {
+    let age = parseInt(promptFor("What is the age of the person you are searching for ?", int));
+
+    let foundPerson = people.filter(function (person) {
+        if (person.age === age) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+        
+    })
+    return foundPerson;
+}
+
 
 // alerts a list of people
 function displayPeople(people){
@@ -78,14 +210,22 @@ function displayPeople(people){
   }).join("\n"));
 }
 
-function displayPerson(person){
+
   // print all of the information about a person:
-  // height, weight, age, name, occupation, eye color.
-  let personInfo = "First Name: " + person.firstName + "\n";
-  personInfo += "Last Name: " + person.lastName + "\n";
-  // TODO: finish getting the rest of the information to display
-  alert(personInfo);
+    // height, weight, age, name, occupation, eye color.
+function displayPerson(person) {
+    let personInfo = "First Name: " + person.firstName + "\n";
+    personInfo += "Last Name: " + person.lastName + "\n";
+    personInfo += "Height: " + personInfo.height + "\n";
+    personInfo += "Age: " + personInfo.age + "\n";
+    personInfo += "Weight: " + personInfo.weight + "\n";
+    personInfo += "Occupation: " + personInfo.occupation + "\n";
+    personInfo += "Eye Color: " + personInfo.eyeColor + "\n";
+
+
+    alert(personInfo);
 }
+
 
 // function that prompts and validates user input
 function promptFor(question, valid){
@@ -97,10 +237,68 @@ function promptFor(question, valid){
 
 // helper function to pass into promptFor to validate yes/no answers
 function yesNo(input){
-  return input.toLowerCase() == "yes" || input.toLowerCase() == "no";
+  return input.toLowerCase() === "yes" || input.toLowerCase() === "no";
 }
 
 // helper function to pass in as default promptFor validation
 function chars(input){
   return true; // default validation only
 }
+
+// helper function for numbers
+
+function int(input) {
+    if (isNaN(input) || input < 1 || input > 300) {
+        alert("Please enter a number between 1 and 300");
+        return false;
+    }
+    return true;
+}
+
+// helper function for gender
+
+function maleFemale(input) {
+    if (input.toLowerCase() === "male" || input.toLowerCase() === "female") {
+        return true;
+    }
+    else {
+        alert("Please type male or female");
+        return false;
+    }
+   
+}
+
+// helper function for eye color
+
+function eyes(input) {
+    if (input.toLowerCase() === "brown" || "black" || "hazel" || "blue" || "green") {
+        return true;
+    }
+    else {
+        alert("Please select another eye color");
+        return false;
+    }
+}
+
+// helper function for occupation
+
+function occupations(input) {
+    if (input.toLowerCase() === "programmer" || "assistant" || "landscaper" || "nurse" || "student" || "architect" || "doctor" || "landscaper" || "politician") {
+        return true;
+    }
+    else {
+        alert("Enter a different occupation");
+        return false; 
+    }
+}
+
+// helper function for name search
+
+function names(input) {
+    if (input.toLowerCase() === " ") {
+        alert("Please enter a name");
+        return false;
+    }
+    return true;
+}
+
