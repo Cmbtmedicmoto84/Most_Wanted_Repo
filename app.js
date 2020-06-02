@@ -78,76 +78,74 @@ function searchByName(people){
 
 function searchByTrait(people){
 
-    if (!people){
-        alert("Could not locate anyone with searched criteria.");
-        return app(people);
-    }
-  let displayOption = prompt("Do you want to search by the persons 'gender', 'height', 'weight', 'eye color' or 'age'?  Or select from 2 to 3 of the prior traits, separated by a comma. Type the option you want or to start over type 'restart'.")
-  
+
+let displayOption = promptFor("Do you want to search by the persons 'gender', 'height', 'weight', 'eye color' or 'age'?  Or select from 2 to 3 of the prior traits, separated by a comma. Type the option you want or to start over type 'restart'.", chars).toLowerCase();
+let filterPeople;
+
   switch(displayOption){
     case "gender":
-    searchByGender(people);
-    displayPeople(people);
+    filterPeople = searchByGender(people);
+    displayPeople(filterPeople);
     break;
     case "gender" + "," + "age":
-    searchByGender(people);
-    searchByAge(people);
-    displayPeople(people);
+    filterPeople = searchByGender(people);
+    filterPeople = searchByAge(people);
+    displayPeople(filterPeople);
     break;
     case "gender" + "," + "height":
-    searchByGender(people);
-    searchByHeight(people);
-    displayPeople(people);
+    filterPeople = searchByGender(people);
+    filterPeople = searchByHeight(people);
+    displayPeople(filterPeople);
     break;
     case "gender" + "," + "weight":
-    searchByGender(people);
-    searchByWeight(people);
-    displayPeople(people);
+    filterPeople = searchByGender(people);
+    filterPeople = searchByWeight(people);
+    displayPeople(filterPeople);
     break;
     case "gender" + "," + "eye color":
-    searchByGender(people);
-    searchByEyes(people);
-    displayPeople(people);
+    filterPeople = searchByGender(people);
+    filterPeople = searchByEyes(people);
+    displayPeople(filterPeople);
     break;
     case "gender" + "," + "age" + "," + "height":
-    searchByGender(people);
-    searchByAge(people);
-    searchByHeight(people);
-    displayPeople(people);
+    filterPeople = searchByGender(people);
+    filterPeople = searchByAge(people);
+    filterPeople = searchByHeight(people);
+    displayPeople(filterPeople);
     break;
-    case "gender" + "," + "height" + "weight":
-    searchByGender(people);
-    searchByHeight(people);
-    searchByWeight(people);
-    displayPeople(people);
+    case "gender" + "," + "height" + "," + "weight":
+    filterPeople = searchByGender(people);
+    filterPeople = searchByHeight(people);
+    filterPeople = searchByWeight(people);
+    displayPeople(filterPeople);
     break;
     case "gender" + "," + "weight" + "," + "eye color":
-    searchByGender(people);
-    searchByWeight(people);
-    searchByEyes(people);
-    displayPeople(people);
+    filterPeople = searchByGender(people);
+    filterPeople = searchByWeight(people);
+    filterPeople = searchByEyes(people);
+    displayPeople(filterPeople);
     break;
     case "gender" + "," + "eye color" + "," + "age":
-    searchByGender(people);
-    searchByEyes(people);
-    searchByAge(people);
-    displayPeople(people);
+    filterPeople = searchByGender(people);
+    filterPeople = searchByEyes(people);
+    filterPeople = searchByAge(people);
+    displayPeople(filterPeople);
     break;
     case "height":
-    searchByHeight(people);
-    displayPeople(people);
+    filterPeople = searchByHeight(people);
+    displayPeople(filterPeople);
     break;
     case "weight":
-    searchByWeight(people);
-    displayPeople(people);
+    filterPeople = searchByWeight(people);
+    displayPeople(filterPeople);
     break;
     case "eye color":
-    searchByEyes(people);
-    displayPeople(people);
+    filterPeople = searchByEyes(people);
+    displayPeople(filterPeople);
     break;
     case "age":
-    searchByAge(people);
-    displayPeople(people);
+    filterPeople = searchByAge(people);
+    displayPeople(filterPeople);
     break;
     case "restart":
     app(people);
@@ -171,13 +169,12 @@ function searchByGender(people) {
         }
     })
 
-    foundGender = foundGender[0];
     return foundGender;
 }
 
 // search by dob
 function searchByBirth(people) {
-    let birth = promptFor("What is the date of birth you are searching for? (day month year)", chars);
+    let birth = promptFor("What is the date of birth for the person you are searching for? (day month year)", chars);
     let foundDateOfBirth = people.filter(function(person) {
         if (person.birth === birth) {
             return true;
@@ -187,7 +184,6 @@ function searchByBirth(people) {
         }
     })
 
-    foundDateOfBirth = foundDateOfBirth[0];
     return foundDateOfBirth;
 }
 
@@ -204,7 +200,6 @@ function searchByHeight(people) {
         }
     })
 
-    foundHeight = foundHeight[0];
     return foundHeight;
 }
 
@@ -221,7 +216,6 @@ function searchByWeight(people) {
         }
     })
 
-    foundWeight = foundWeight[0];
     return foundWeight;
 }
 
@@ -238,7 +232,6 @@ function searchByEyes(people) {
         }    
     })
 
-    foundEyeColor = foundEyeColor[0];
     return foundEyeColor;
 }
  
@@ -255,7 +248,6 @@ function searchByOccupation(people) {
         }   
     })
 
-    foundOccupation = foundOccupation[0];
     return foundOccupation;
 }
 
@@ -272,7 +264,6 @@ function searchByAge(people) {
         }        
     })
 
-    foundAge = foundAge[0];
     return foundAge;
 }
 
